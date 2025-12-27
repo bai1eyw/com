@@ -3,466 +3,938 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bai1eyw | Modern Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Professional Portfolio & Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #ff6b6b;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --bg-light: #f8f9fa;
+            --bg-dark: #1a1a2e;
+            --border-color: #dee2e6;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode nav {
+            background-color: #0f0f1e;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        body.dark-mode nav a {
+            color: var(--text-light);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .dark-mode-toggle {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .dark-mode-toggle:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0052a3 100%);
+            color: white;
+            padding: 6rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #004a99 0%, #003366 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero .btn {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .hero .btn:hover {
+            background: #ff5252;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background: #ff5252;
+        }
+
+        .btn-success {
+            background: var(--success-color);
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        body.dark-mode .card {
+            background-color: #252d3d;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .card h3 {
+            color: #66b3ff;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .card p {
+            color: #bbb;
+        }
+
+        /* Sections */
+        section {
+            padding: 3rem 0;
+            scroll-behavior: smooth;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        body.dark-mode section h2 {
+            color: var(--text-light);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        body.dark-mode label {
+            color: var(--text-light);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background-color: white;
+            color: var(--text-dark);
+        }
+
+        body.dark-mode input[type="text"],
+        body.dark-mode input[type="email"],
+        body.dark-mode input[type="tel"],
+        body.dark-mode textarea,
+        body.dark-mode select {
+            background-color: #1a1a2e;
+            color: var(--text-light);
+            border-color: #444;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 0.3s ease;
+        }
+
+        body.dark-mode .modal-content {
+            background-color: #252d3d;
+            color: var(--text-light);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .close-btn {
+            color: var(--text-light);
+        }
+
+        .close-btn:hover {
+            color: var(--danger-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            animation: slideInUp 0.3s ease;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        body.dark-mode .alert-success {
+            background-color: #1e4620;
+            color: #6dd58d;
+        }
+
+        body.dark-mode .alert-error {
+            background-color: #4a1f1f;
+            color: #ff6b6b;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        body.dark-mode footer {
+            background-color: #0f0f1e;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .feature {
+            background-color: #252d3d;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .testimonial {
+            background-color: #252d3d;
+        }
+
+        .testimonial:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        /* Success Message */
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-code"></i> Portfolio
-            </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item"><button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button></li>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">MyPortfolio</div>
+            <ul>
+                <li><a onclick="smoothScroll('home')">Home</a></li>
+                <li><a onclick="smoothScroll('services')">Services</a></li>
+                <li><a onclick="smoothScroll('features')">Features</a></li>
+                <li><a onclick="smoothScroll('testimonials')">Testimonials</a></li>
+                <li><a onclick="smoothScroll('contact')">Contact</a></li>
+                <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="fade-in">Hi, I'm <span class="highlight">bai1eyw</span></h1>
-                <p class="fade-in-delay">Full-Stack Developer | Creative Designer | Tech Enthusiast</p>
-                <div class="typing-text fade-in-delay-2">
-                    <span class="typing"></span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-                <div class="social-links">
-                    <a href="#" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="image-container">
-                    <img src="https://pngimg.com/uploads/porsche_logo/porsche_logo_PNG6.png" alt="Porsche Logo">
-                    <div class="image-border"></div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll Down</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="section-title">
-            <h2>About Me</h2>
-            <div class="title-underline"></div>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I'm a dedicated full-stack developer and Discord bot specialist with 2 years of hands-on experience crafting high-quality web applications and custom Discord bots. I specialize in building responsive, feature-rich websites and intelligent Discord automation solutions that enhance user engagement and streamline community management.</p>
-                <p>My expertise spans modern web technologies and Discord.py bot development. I create beautiful, functional digital experiences combined with powerful Discord integrations that bring communities to life. From frontend design to backend architecture, I develop comprehensive solutions that solve real-world problems and deliver exceptional results.</p>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <i class="fas fa-code"></i>
-                        <h3>Web Development</h3>
-                        <p>HTML, CSS, JavaScript, React, Node.js</p>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-discord"></i>
-                        <h3>Discord Bots</h3>
-                        <p>Discord.py, Command Systems, Events</p>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-database"></i>
-                        <h3>Databases</h3>
-                        <p>MongoDB, PostgreSQL, SQLite</p>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-cog"></i>
-                        <h3>Backend Development</h3>
-                        <p>REST APIs, Server Management, Automation</p>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=500&fit=crop" alt="About Image">
-            </div>
+        <div class="container">
+            <h1>Welcome to My Professional Portfolio</h1>
+            <p>Delivering excellence in web development, design, and digital solutions</p>
+            <button class="btn" onclick="openModal('contactModal')">Get Started</button>
+            <button class="btn btn-secondary" onclick="smoothScroll('services')">Learn More</button>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="section-title">
-            <h2>Services</h2>
-            <div class="title-underline"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-laptop-code"></i>
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/0066cc/ffffff?text=Web+Development" alt="Web Development">
+                    <div class="card-content">
+                        <h3>Web Development</h3>
+                        <p>Create responsive, modern websites using the latest technologies and best practices.</p>
+                        <button class="btn btn-small" onclick="openModal('serviceModal', 'Web Development')">Learn More</button>
+                    </div>
                 </div>
-                <h3>Web Development</h3>
-                <p>Building responsive, modern websites with HTML, CSS, JavaScript, and React. Full-stack solutions tailored to your needs.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fab fa-discord"></i>
+
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/ff6b6b/ffffff?text=UI+Design" alt="UI Design">
+                    <div class="card-content">
+                        <h3>UI/UX Design</h3>
+                        <p>Design beautiful and intuitive user interfaces that users love to interact with.</p>
+                        <button class="btn btn-small" onclick="openModal('serviceModal', 'UI/UX Design')">Learn More</button>
+                    </div>
                 </div>
-                <h3>Discord Bot Development</h3>
-                <p>Creating custom Discord bots using Discord.py with advanced features, commands, and server automation.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-cog"></i>
+
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/27ae60/ffffff?text=Consulting" alt="Consulting">
+                    <div class="card-content">
+                        <h3>Digital Consulting</h3>
+                        <p>Strategic guidance to transform your business and achieve your digital goals.</p>
+                        <button class="btn btn-small" onclick="openModal('serviceModal', 'Digital Consulting')">Learn More</button>
+                    </div>
                 </div>
-                <h3>Backend Development</h3>
-                <p>Developing robust APIs and server infrastructure with Node.js. Database design and optimization included.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-server"></i>
-                </div>
-                <h3>Server Configuration</h3>
-                <p>Setting up and configuring ERLC roleplay servers with custom scripts and management systems.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3>Database Solutions</h3>
-                <p>Designing and managing databases (MongoDB, PostgreSQL, SQLite) with efficient data architecture.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-headset"></i>
-                </div>
-                <h3>Technical Support</h3>
-                <p>Providing ongoing support, maintenance, and optimization for your web projects and Discord bots.</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="section-title">
-            <h2>Featured Projects</h2>
-            <div class="title-underline"></div>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://i.postimg.cc/NfwDT7H7/assetsimagesottawa-logo-png.webp" alt="Greater Ottawa Roleplay">
-                    <div class="project-overlay">
-                        <a href="https://discord.gg/mvqnKB9Rry" class="project-link">Visit Server</a>
-                        <a href="#" class="project-link learn-more-btn" data-server="ottawa">Learn More</a>
-                    </div>
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2>Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast & Reliable</h3>
+                    <p>High-performance solutions that work seamlessly across all devices.</p>
                 </div>
-                <div class="project-content">
-                    <h3>Greater Ottawa Roleplay Server</h3>
-                    <p>A premier immersive roleplay server with realistic economy, law enforcement, and community-driven gameplay. Features dynamic events and engaging storylines for players.</p>
-                    <div class="project-tags">
-                        <span class="tag">ERLC</span>
-                        <span class="tag">Roleplay</span>
-                        <span class="tag">Community</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://i.postimg.cc/J4Z1YmtW/a-b928c91ce4fee69fbaa8b1a586ee2150.webp" alt="Texas State Roleplay">
-                    <div class="project-overlay">
-                        <a href="#" class="project-link">Visit Server</a>
-                        <a href="#" class="project-link learn-more-btn" data-server="texas">Learn More</a>
-                    </div>
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Creative Design</h3>
+                    <p>Modern, visually stunning designs tailored to your brand.</p>
                 </div>
-                <div class="project-content">
-                    <h3>Texas State Roleplay</h3>
-                    <p>An expansive roleplay server set in Texas with realistic law enforcement, emergency services, and business opportunities. Delivering authentic roleplay experiences in a Lone Star State setting.</p>
-                    <div class="project-tags">
-                        <span class="tag">ERLC</span>
-                        <span class="tag">Roleplay</span>
-                        <span class="tag">Simulation</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://i.postimg.cc/NjdZpP6W/channels4-profile-(1).jpg" alt="Georgia State Roleplay">
-                    <div class="project-overlay">
-                        <a href="#" class="project-link">Visit Server</a>
-                        <a href="#" class="project-link learn-more-btn" data-server="georgia">Learn More</a>
-                    </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Safe</h3>
+                    <p>Enterprise-grade security and data protection standards.</p>
                 </div>
-                <div class="project-content">
-                    <h3>Georgia State Roleplay</h3>
-                    <p>An engaging roleplay platform featuring diverse gameplay opportunities across Georgia. From criminal enterprises to legitimate businesses, players enjoy immersive storytelling and character development.</p>
-                    <div class="project-tags">
-                        <span class="tag">ERLC</span>
-                        <span class="tag">Roleplay</span>
-                        <span class="tag">Server</span>
-                    </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile First</h3>
+                    <p>Optimized for all screen sizes and mobile devices.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Scalable Solutions</h3>
+                    <p>Grow your business with solutions that scale with you.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>Always available to help you succeed and troubleshoot issues.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="section-title">
-            <h2>What Clients Say</h2>
-            <div class="title-underline"></div>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"bai1eyw absolutely nailed our ERLC server setup. The attention to detail and professional approach made a huge difference. Our community is thriving!"</p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Alex Martinez">
-                    <div>
-                        <h4>Alex Martinez</h4>
-                        <p>Lead Developer, Midnight City RP</p>
-                    </div>
-                </div>
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            
+            <div class="testimonial">
+                <p>"Exceptional service and outstanding results. The team understood our vision perfectly and delivered beyond expectations."</p>
+                <div class="testimonial-author">- Sarah Johnson, CEO Tech Corp</div>
             </div>
 
-            <div class="testimonial-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"Fantastic developer! bai1eyw brought our ERLC server vision to life with innovative features and smooth implementation. Highly recommend their services!"</p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Jessica Lee">
-                    <div>
-                        <h4>Jessica Lee</h4>
-                        <p>Admin, Apex City Roleplay</p>
-                    </div>
-                </div>
+            <div class="testimonial">
+                <p>"Professional, efficient, and results-driven. Our website has seen a 300% increase in engagement since launch."</p>
+                <div class="testimonial-author">- Michael Chen, Marketing Director</div>
             </div>
 
-            <div class="testimonial-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"Outstanding work on our server configuration. bai1eyw solved every technical challenge with creative solutions and delivered everything ahead of schedule!"</p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Marcus Johnson">
-                    <div>
-                        <h4>Marcus Johnson</h4>
-                        <p>Developer, Neon District RP</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"Brilliant developer with a deep understanding of ERLC servers. bai1eyw's expertise and communication made the entire process seamless and stress-free."</p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1507539332640-34be94ba26ca?w=100&h=100&fit=crop" alt="David Park">
-                    <div>
-                        <h4>David Park</h4>
-                        <p>Manager, Silver Valley Roleplay</p>
-                    </div>
-                </div>
+            <div class="testimonial">
+                <p>"The best investment we made for our digital transformation. Highly recommended!"</p>
+                <div class="testimonial-author">- Emily Rodriguez, Business Owner</div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="blog">
-        <div class="section-title">
-            <h2>Latest Articles</h2>
-            <div class="title-underline"></div>
-        </div>
-        <div class="blog-grid">
-            <article class="blog-card">
-                <div class="blog-image">
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop" alt="Building Discord Bots">
-                    <div class="blog-category">Discord Development</div>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span class="blog-date"><i class="fas fa-calendar"></i> Dec 27, 2024</span>
-                        <span class="blog-author"><i class="fas fa-user"></i> bai1eyw</span>
-                    </div>
-                    <h3>Getting Started with Discord.py Bot Development</h3>
-                    <p>Learn how to create powerful Discord bots from scratch using Discord.py. This guide covers setup, commands, events, and advanced features for building feature-rich bot automation...</p>
-                    <a href="#" class="read-more blog-read-more" data-article="discord-bot">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="ERLC Server Management">
-                    <div class="blog-category">Server Management</div>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span class="blog-date"><i class="fas fa-calendar"></i> Dec 25, 2024</span>
-                        <span class="blog-author"><i class="fas fa-user"></i> bai1eyw</span>
-                    </div>
-                    <h3>Best Practices for ERLC Roleplay Server Setup</h3>
-                    <p>Explore essential tips and best practices for configuring and managing a successful ERLC roleplay server. Learn about community management, script optimization, and player engagement strategies...</p>
-                    <a href="#" class="read-more blog-read-more" data-article="erlc-server">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">
-                    <img src="https://images.unsplash.com/photo-1460925895917-adf4198c5b73?w=600&h=400&fit=crop" alt="Web Development with React">
-                    <div class="blog-category">Web Development</div>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span class="blog-date"><i class="fas fa-calendar"></i> Dec 22, 2024</span>
-                        <span class="blog-author"><i class="fas fa-user"></i> bai1eyw</span>
-                    </div>
-                    <h3>Building Responsive Websites with Modern JavaScript</h3>
-                    <p>Discover techniques for building responsive, high-performance websites using HTML, CSS, and JavaScript. Learn about modern frameworks, optimization, and user experience best practices...</p>
-                    <a href="#" class="read-more blog-read-more" data-article="web-dev">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-        </div>
-        <div class="view-all-posts">
-            <a href="#" class="btn btn-primary">View All Articles</a>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="section-title">
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
             <h2>Get In Touch</h2>
-            <div class="title-underline"></div>
-        </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Location</h3>
-                        <p>New York, NY</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Email</h3>
-                        <p><a href="mailto:bailey@example.com">bailey@example.com</a></p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Phone</h3>
-                        <p><a href="tel:+1646789234">+1 (646) 789-2341</a></p>
-                    </div>
-                </div>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <p style="text-align: center; margin-bottom: 2rem;">Have a project in mind? Let's discuss how we can help you.</p>
+                <button class="btn btn-success" style="display: block; margin: 0 auto; width: 200px;" onclick="openModal('contactModal')">Send us a Message</button>
             </div>
+        </div>
+    </section>
 
-            <form class="contact-form" id="contactForm">
+    <!-- Service Details Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="serviceTitle">Service Details</h2>
+                <button class="close-btn" onclick="closeModal('serviceModal')">&times;</button>
+            </div>
+            <div id="serviceBody">
+                <p>Loading service details...</p>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: right;">
+                <button class="btn" onclick="closeModal('serviceModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Contact Us</h2>
+                <button class="close-btn" onclick="closeModal('contactModal')">&times;</button>
+            </div>
+            <div id="alertContainer"></div>
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="text" placeholder="Subject" required>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
                 </div>
+
                 <div class="form-group">
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <label for="service">Service Interested In *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Digital Consulting">Digital Consulting</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <div style="text-align: right; gap: 1rem; display: flex; justify-content: flex-end;">
+                    <button type="button" class="btn" onclick="closeModal('contactModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Send Message</button>
+                </div>
             </form>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 bai1eyw. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="#" class="footer-social-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="footer-social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-            </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 My Professional Portfolio. All rights reserved.</p>
+            <p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Contact</a>
+            </p>
         </div>
     </footer>
 
-    <!-- Blog Article Modal -->
-    <div class="modal" id="blogModal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div class="blog-modal-header">
-                <h2 id="blogModalTitle"></h2>
-                <span id="blogModalCategory" class="blog-modal-category"></span>
-            </div>
-            <div id="blogModalBody"></div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="blogModalClose">Close</button>
-            </div>
-        </div>
-    </div>
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            updateDarkModeButton();
+        }
 
-    <!-- Server Details Modal -->
-    <div class="modal" id="serverModal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <div id="modalBody"></div>
-            <div class="modal-footer">
-                <a href="#" id="modalLink" class="btn btn-primary" target="_blank">Join Discord</a>
-                <button class="btn btn-secondary" id="modalClose">Close</button>
-            </div>
-        </div>
-    </div>
+        function updateDarkModeButton() {
+            const btn = document.querySelector('.dark-mode-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.textContent = '☀️ Light Mode';
+            } else {
+                btn.textContent = '🌙 Dark Mode';
+            }
+        }
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+        // Load dark mode preference
+        window.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+            updateDarkModeButton();
+        });
 
-    <script src="script.js"></script>
+        // Smooth Scrolling
+        function smoothScroll(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Modal Functions
+        function openModal(modalId, serviceName = null) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                if (modalId === 'serviceModal' && serviceName) {
+                    loadServiceDetails(serviceName);
+                }
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                clearAlerts();
+            }
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Load Service Details
+        function loadServiceDetails(serviceName) {
+            const serviceDetails = {
+                'Web Development': {
+                    description: 'We create responsive, modern websites using HTML5, CSS3, and JavaScript. Our web development services include:',
+                    features: [
+                        'Responsive Design',
+                        'Progressive Web Apps',
+                        'E-commerce Solutions',
+                        'Performance Optimization',
+                        'SEO Optimization',
+                        'Ongoing Maintenance'
+                    ]
+                },
+                'UI/UX Design': {
+                    description: 'Beautiful and intuitive designs that enhance user experience. Our UI/UX services include:',
+                    features: [
+                        'Wireframing & Prototyping',
+                        'Visual Design',
+                        'User Research',
+                        'Interaction Design',
+                        'Usability Testing',
+                        'Design Systems'
+                    ]
+                },
+                'Digital Consulting': {
+                    description: 'Strategic guidance for your digital transformation. Our consulting services include:',
+                    features: [
+                        'Digital Strategy',
+                        'Technology Assessment',
+                        'Process Improvement',
+                        'Change Management',
+                        'Training & Support',
+                        'ROI Analysis'
+                    ]
+                }
+            };
+
+            const service = serviceDetails[serviceName];
+            if (service) {
+                document.getElementById('serviceTitle').textContent = serviceName;
+                let html = `<p>${service.description}</p><ul style="margin: 1.5rem 0; list-style: none;">`;
+                service.features.forEach(feature => {
+                    html += `<li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0;">✓</span> ${feature}
+                    </li>`;
+                });
+                html += '</ul><p style="margin-top: 1.5rem;"><strong>Ready to get started?</strong> Contact us to discuss your project needs.</p>';
+                document.getElementById('serviceBody').innerHTML = html;
+            }
+        }
+
+        // Form Handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('contactForm');
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value.trim();
+
+            // Validate form
+            if (!name || !email || !service || !message) {
+                showAlert('alertContainer', 'Please fill in all required fields.', 'error');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showAlert('alertContainer', 'Please enter a valid email address.', 'error');
+                return;
+            }
+
+            // Simulate form submission
+            showAlert('alertContainer', 'Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                form.reset();
+                setTimeout(() => closeModal('contactModal'), 500);
+            }, 2000);
+        }
+
+        // Alert Functions
+        function showAlert(containerId, message, type) {
+            const container = document.getElementById(containerId);
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
+            const alertHTML = `<div class="alert ${alertClass}">${message}</div>`;
+            container.innerHTML = alertHTML;
+        }
+
+        function clearAlerts() {
+            const alertContainer = document.getElementById('alertContainer');
+            if (alertContainer) {
+                alertContainer.innerHTML = '';
+            }
+        }
+
+        // Keyboard support for modals (ESC to close)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    activeModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+
+        // Add fade-in animation on page load
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.card, .feature, .testimonial').forEach((element, index) => {
+                element.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s both`;
+            });
+        });
+    </script>
 </body>
 </html>
