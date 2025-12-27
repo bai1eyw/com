@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio & Services</title>
+    <title>Portfolio - Welcome</title>
     <style>
         * {
             margin: 0;
@@ -11,326 +11,432 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #0066cc;
-            --secondary-color: #ff6b6b;
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-light: #f8f9fa;
-            --bg-dark: #1a1a2e;
-            --border-color: #dee2e6;
-            --success-color: #27ae60;
-            --warning-color: #f39c12;
-            --danger-color: #e74c3c;
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            color: #333;
+            overflow-x: hidden;
         }
 
-        body.dark-mode {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-        }
-
-        /* Navigation */
+        /* Navigation Bar */
         nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
-            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        body.dark-mode nav {
-            background-color: #0f0f1e;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        nav .container {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        body.dark-mode nav a {
-            color: var(--text-light);
-        }
-
-        nav a:hover {
-            color: var(--primary-color);
-        }
-
-        .dark-mode-toggle {
-            background: none;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .dark-mode-toggle:hover {
-            background: var(--primary-color);
             color: white;
+            text-decoration: none;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #0052a3 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 6rem 1rem;
+            padding: 150px 2rem 100px;
             text-align: center;
-            margin-bottom: 3rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
         }
 
-        body.dark-mode .hero {
-            background: linear-gradient(135deg, #004a99 0%, #003366 100%);
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            animation: fadeInDown 0.8s ease;
+            font-weight: bold;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease;
+            opacity: 0.9;
         }
 
-        .hero .btn {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .hero .btn:hover {
-            background: #ff5252;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Buttons */
-        .btn {
+        .cta-button {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: var(--primary-color);
-            color: white;
+            padding: 12px 30px;
+            background: white;
+            color: #667eea;
             text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
+            border-radius: 50px;
+            font-weight: bold;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
             font-size: 1rem;
             margin: 0.5rem;
         }
 
-        .btn:hover {
-            background: #0052a3;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-secondary {
-            background: var(--secondary-color);
+        .secondary-button {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
         }
 
-        .btn-secondary:hover {
-            background: #ff5252;
+        .secondary-button:hover {
+            background: white;
+            color: #667eea;
         }
 
-        .btn-success {
-            background: var(--success-color);
+        /* Sections */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .btn-success:hover {
-            background: #229954;
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
         }
 
-        .btn-small {
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
+        /* About Section */
+        .about {
+            background: #f9f9f9;
         }
 
-        /* Cards */
-        .cards-container {
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .skills {
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .skill-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 0.8s ease;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+        }
+
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
         }
 
-        .card {
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #f9f9f9;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
             background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease;
         }
 
-        body.dark-mode .card {
-            background-color: #252d3d;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .card img {
+        .project-image {
             width: 100%;
             height: 200px;
-            object-fit: cover;
-            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
         }
 
-        .card-content {
+        .project-content {
             padding: 1.5rem;
         }
 
-        .card h3 {
+        .project-content h3 {
+            color: #333;
             margin-bottom: 0.5rem;
-            color: var(--primary-color);
         }
 
-        body.dark-mode .card h3 {
-            color: #66b3ff;
-        }
-
-        .card p {
+        .project-content p {
             color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             margin-bottom: 1rem;
         }
 
-        body.dark-mode .card p {
-            color: #bbb;
+        .tag {
+            background: #e0e7ff;
+            color: #667eea;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
 
-        /* Sections */
-        section {
-            padding: 3rem 0;
-            scroll-behavior: smooth;
+        .project-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: var(--text-dark);
+        .project-link:hover {
+            color: #764ba2;
         }
 
-        body.dark-mode section h2 {
-            color: var(--text-light);
+        /* Testimonials Section */
+        .testimonials {
+            background: white;
         }
 
-        /* Forms */
-        .form-group {
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
             margin-bottom: 1.5rem;
+            color: #555;
+            font-style: italic;
+            line-height: 1.8;
         }
 
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-dark);
+        .testimonial-author {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.25rem;
         }
 
-        body.dark-mode label {
-            color: var(--text-light);
+        .testimonial-role {
+            color: #999;
+            font-size: 0.9rem;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea,
-        select {
+        .stars {
+            color: #ffc107;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Blog Section */
+        .blog {
+            background: #f9f9f9;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-image {
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-            background-color: white;
-            color: var(--text-dark);
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
         }
 
-        body.dark-mode input[type="text"],
-        body.dark-mode input[type="email"],
-        body.dark-mode input[type="tel"],
-        body.dark-mode textarea,
-        body.dark-mode select {
-            background-color: #1a1a2e;
-            color: var(--text-light);
-            border-color: #444;
+        .blog-content {
+            padding: 1.5rem;
         }
 
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        .blog-date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #764ba2;
         }
 
         /* Modal */
@@ -342,66 +448,104 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.6);
             animation: fadeIn 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .modal-content {
             background-color: white;
+            margin: 5% auto;
             padding: 2rem;
             border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            animation: slideInUp 0.3s ease;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
         }
 
-        body.dark-mode .modal-content {
-            background-color: #252d3d;
-            color: var(--text-light);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1rem;
-        }
-
-        .modal-header h2 {
-            margin: 0;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
             cursor: pointer;
-            color: var(--text-dark);
+            transition: color 0.3s ease;
         }
 
-        body.dark-mode .close-btn {
-            color: var(--text-light);
+        .close-modal:hover {
+            color: #000;
         }
 
-        .close-btn:hover {
-            color: var(--danger-color);
+        .modal-title {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 1rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .modal-text {
+            color: #555;
+            line-height: 1.8;
         }
 
-        @keyframes slideInUp {
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 0 0.5rem;
+            background: #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -412,527 +556,799 @@
             }
         }
 
-        /* Alert Messages */
-        .alert {
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            animation: slideInUp 0.3s ease;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        body.dark-mode .alert-success {
-            background-color: #1e4620;
-            color: #6dd58d;
-        }
-
-        body.dark-mode .alert-error {
-            background-color: #4a1f1f;
-            color: #ff6b6b;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        body.dark-mode footer {
-            background-color: #0f0f1e;
-        }
-
-        footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature {
-            padding: 2rem;
-            text-align: center;
-            background: white;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        body.dark-mode .feature {
-            background-color: #252d3d;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Testimonials */
-        .testimonial {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary-color);
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        body.dark-mode .testimonial {
-            background-color: #252d3d;
-        }
-
-        .testimonial:hover {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-top: 1rem;
-        }
-
-        /* Success Message */
-        .hidden {
-            display: none !important;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
             .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
                 font-size: 2rem;
             }
 
-            nav ul {
-                gap: 1rem;
+            .services-grid,
+            .projects-grid,
+            .testimonials-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
             }
 
-            section h2 {
+            .modal-content {
+                margin: 20% auto;
+                width: 90%;
+                padding: 1.5rem;
+            }
+
+            .footer-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 100px 1rem 60px;
+                margin-top: 50px;
+            }
+
+            .hero h1 {
                 font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 40px 1rem;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                margin: 0.25rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav>
-        <div class="container">
-            <div class="logo">MyPortfolio</div>
-            <ul>
-                <li><a onclick="smoothScroll('home')">Home</a></li>
-                <li><a onclick="smoothScroll('services')">Services</a></li>
-                <li><a onclick="smoothScroll('features')">Features</a></li>
-                <li><a onclick="smoothScroll('testimonials')">Testimonials</a></li>
-                <li><a onclick="smoothScroll('contact')">Contact</a></li>
-                <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        <div class="nav-container">
+            <a href="#home" class="logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('home')">Home</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('services')">Services</a></li>
+                <li><a onclick="scrollToSection('projects')">Projects</a></li>
+                <li><a onclick="scrollToSection('testimonials')">Testimonials</a></li>
+                <li><a onclick="scrollToSection('blog')">Blog</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Welcome to My Professional Portfolio</h1>
-            <p>Delivering excellence in web development, design, and digital solutions</p>
-            <button class="btn" onclick="openModal('contactModal')">Get Started</button>
-            <button class="btn btn-secondary" onclick="smoothScroll('services')">Learn More</button>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Crafting digital experiences with creativity and precision</p>
+            <button class="cta-button" onclick="scrollToSection('projects')">View My Work</button>
+            <button class="cta-button secondary-button" onclick="scrollToSection('contact')">Get in Touch</button>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="cards-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200/0066cc/ffffff?text=Web+Development" alt="Web Development">
-                    <div class="card-content">
-                        <h3>Web Development</h3>
-                        <p>Create responsive, modern websites using the latest technologies and best practices.</p>
-                        <button class="btn btn-small" onclick="openModal('serviceModal', 'Web Development')">Learn More</button>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Who Am I?</h3>
+                <p>I am a passionate full-stack developer with a keen eye for design and a love for solving complex problems. With 5+ years of experience, I've helped numerous businesses transform their digital presence.</p>
+                <p>My expertise spans across front-end development, back-end systems, and everything in between. I believe in writing clean, maintainable code and creating intuitive user experiences.</p>
+                
+                <div class="skills">
+                    <h4 style="margin-bottom: 1rem; color: #333;">My Skills</h4>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Web Development (HTML, CSS, JavaScript)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%; animation-delay: 0s;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">React & Vue.js</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%; animation-delay: 0.1s;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Backend Development (Node.js, Python)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%; animation-delay: 0.2s;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Database Design (SQL, MongoDB)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 82%; animation-delay: 0.3s;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">UI/UX Design</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%; animation-delay: 0.4s;"></div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200/ff6b6b/ffffff?text=UI+Design" alt="UI Design">
-                    <div class="card-content">
-                        <h3>UI/UX Design</h3>
-                        <p>Design beautiful and intuitive user interfaces that users love to interact with.</p>
-                        <button class="btn btn-small" onclick="openModal('serviceModal', 'UI/UX Design')">Learn More</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200/27ae60/ffffff?text=Consulting" alt="Consulting">
-                    <div class="card-content">
-                        <h3>Digital Consulting</h3>
-                        <p>Strategic guidance to transform your business and achieve your digital goals.</p>
-                        <button class="btn btn-small" onclick="openModal('serviceModal', 'Digital Consulting')">Learn More</button>
-                    </div>
-                </div>
+            </div>
+            
+            <div class="about-image">
+                <div style="width: 100%; height: 300px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: white;">👨‍💻</div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features">
-        <div class="container">
-            <h2>Why Choose Us</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Fast & Reliable</h3>
-                    <p>High-performance solutions that work seamlessly across all devices.</p>
-                </div>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Web Design</h3>
+                <p>Creating beautiful, responsive websites that engage users and deliver results. I focus on user experience and modern design principles.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Web Development</h3>
+                <p>Building robust and scalable web applications using the latest technologies. From front-end to back-end, I've got you covered.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Mobile Optimization</h3>
+                <p>Ensuring your website looks and functions perfectly on all devices. Mobile-first design is essential in today's digital landscape.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Performance Optimization</h3>
+                <p>Improving page load times and overall website performance. Fast websites rank better and provide better user experience.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>Security</h3>
+                <p>Implementing best security practices to protect your data and users. Security is not an afterthought, it's a priority.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Consultation</h3>
+                <p>Providing expert guidance on digital strategy, technology choices, and implementation. Let's build something amazing together.</p>
+            </div>
+        </div>
+    </section>
 
-                <div class="feature">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Creative Design</h3>
-                    <p>Modern, visually stunning designs tailored to your brand.</p>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🌐</div>
+                <div class="project-content">
+                    <h3>E-Commerce Platform</h3>
+                    <p>A full-featured e-commerce platform with payment integration, product management, and analytics dashboard.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <a class="project-link" onclick="openProjectModal('project1')">View Details →</a>
                 </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Secure & Safe</h3>
-                    <p>Enterprise-grade security and data protection standards.</p>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🚀</div>
+                <div class="project-content">
+                    <h3>Task Management App</h3>
+                    <p>A collaborative task management application with real-time updates, team collaboration, and smart notifications.</p>
+                    <div class="project-tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">WebSockets</span>
+                    </div>
+                    <a class="project-link" onclick="openProjectModal('project2')">View Details →</a>
                 </div>
-
-                <div class="feature">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile First</h3>
-                    <p>Optimized for all screen sizes and mobile devices.</p>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">📊</div>
+                <div class="project-content">
+                    <h3>Analytics Dashboard</h3>
+                    <p>An interactive analytics dashboard for data visualization, real-time metrics, and detailed reporting capabilities.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">D3.js</span>
+                        <span class="tag">Python</span>
+                    </div>
+                    <a class="project-link" onclick="openProjectModal('project3')">View Details →</a>
                 </div>
+            </div>
 
-                <div class="feature">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Scalable Solutions</h3>
-                    <p>Grow your business with solutions that scale with you.</p>
+            <div class="project-card">
+                <div class="project-image">💬</div>
+                <div class="project-content">
+                    <h3>Social Messaging Platform</h3>
+                    <p>A real-time messaging platform with group chats, file sharing, and end-to-end encryption capabilities.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">WebRTC</span>
+                        <span class="tag">Socket.io</span>
+                    </div>
+                    <a class="project-link" onclick="openProjectModal('project4')">View Details →</a>
                 </div>
+            </div>
 
-                <div class="feature">
-                    <div class="feature-icon">💬</div>
-                    <h3>24/7 Support</h3>
-                    <p>Always available to help you succeed and troubleshoot issues.</p>
+            <div class="project-card">
+                <div class="project-image">🎓</div>
+                <div class="project-content">
+                    <h3>Learning Management System</h3>
+                    <p>A comprehensive LMS platform with course management, student tracking, quizzes, and progress monitoring.</p>
+                    <div class="project-tags">
+                        <span class="tag">Django</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">React</span>
+                    </div>
+                    <a class="project-link" onclick="openProjectModal('project5')">View Details →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">🏥</div>
+                <div class="project-content">
+                    <h3>Healthcare Management System</h3>
+                    <p>A HIPAA-compliant healthcare platform for appointment scheduling, medical records, and patient management.</p>
+                    <div class="project-tags">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">React</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <a class="project-link" onclick="openProjectModal('project6')">View Details →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials">
-        <div class="container">
-            <h2>What Our Clients Say</h2>
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">Client Testimonials</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Amazing work! The developer delivered exactly what we needed and exceeded our expectations. Highly professional and responsive."</p>
+                <div class="testimonial-author">Sarah Johnson</div>
+                <div class="testimonial-role">CEO, Tech Innovations Inc.</div>
+            </div>
             
-            <div class="testimonial">
-                <p>"Exceptional service and outstanding results. The team understood our vision perfectly and delivered beyond expectations."</p>
-                <div class="testimonial-author">- Sarah Johnson, CEO Tech Corp</div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"The attention to detail is outstanding. Our new website is not only beautiful but also performs exceptionally well. Great investment!"</p>
+                <div class="testimonial-author">Michael Chen</div>
+                <div class="testimonial-role">Founder, Digital Solutions Co.</div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Working with this developer was seamless. They understood our vision and brought it to life beautifully. Can't recommend enough!"</p>
+                <div class="testimonial-author">Emily Rodriguez</div>
+                <div class="testimonial-role">Marketing Director, Creative Agency</div>
             </div>
 
-            <div class="testimonial">
-                <p>"Professional, efficient, and results-driven. Our website has seen a 300% increase in engagement since launch."</p>
-                <div class="testimonial-author">- Michael Chen, Marketing Director</div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Professional, reliable, and incredibly talented. The project was completed on time and the results speak for themselves."</p>
+                <div class="testimonial-author">David Thompson</div>
+                <div class="testimonial-role">Product Manager, StartUp Labs</div>
             </div>
 
-            <div class="testimonial">
-                <p>"The best investment we made for our digital transformation. Highly recommended!"</p>
-                <div class="testimonial-author">- Emily Rodriguez, Business Owner</div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Exceptional problem-solving skills and clear communication throughout the entire project. Would definitely work together again!"</p>
+                <div class="testimonial-author">Lisa Wang</div>
+                <div class="testimonial-role">Operations Lead, Global Tech</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"The best investment we made for our business. The platform has improved our productivity significantly. Highly satisfied!"</p>
+                <div class="testimonial-author">James Murphy</div>
+                <div class="testimonial-role">Owner, Business Solutions Ltd.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <h2 class="section-title">Latest Blog Posts</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-image">📝</div>
+                <div class="blog-content">
+                    <div class="blog-date">December 15, 2025</div>
+                    <h3>10 Web Development Trends to Watch in 2025</h3>
+                    <p class="blog-excerpt">Explore the latest trends shaping the future of web development, from AI integration to new JavaScript frameworks...</p>
+                    <a class="read-more" onclick="openBlogModal('blog1')">Read More →</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-image">💡</div>
+                <div class="blog-content">
+                    <div class="blog-date">December 10, 2025</div>
+                    <h3>Mastering React Hooks: Advanced Patterns</h3>
+                    <p class="blog-excerpt">A deep dive into advanced React Hooks patterns and how to use them effectively in your projects...</p>
+                    <a class="read-more" onclick="openBlogModal('blog2')">Read More →</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-image">🔐</div>
+                <div class="blog-content">
+                    <div class="blog-date">December 5, 2025</div>
+                    <h3>Web Security Best Practices: A Complete Guide</h3>
+                    <p class="blog-excerpt">Learn essential security practices to protect your web applications from common vulnerabilities...</p>
+                    <a class="read-more" onclick="openBlogModal('blog3')">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">⚡</div>
+                <div class="blog-content">
+                    <div class="blog-date">November 30, 2025</div>
+                    <h3>Performance Optimization Tips for Modern Web Apps</h3>
+                    <p class="blog-excerpt">Discover practical techniques to optimize your web application's performance and user experience...</p>
+                    <a class="read-more" onclick="openBlogModal('blog4')">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">🎨</div>
+                <div class="blog-content">
+                    <div class="blog-date">November 25, 2025</div>
+                    <h3>UI/UX Design Principles for Web Developers</h3>
+                    <p class="blog-excerpt">Essential design principles that every developer should understand to create better user experiences...</p>
+                    <a class="read-more" onclick="openBlogModal('blog5')">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">🚀</div>
+                <div class="blog-content">
+                    <div class="blog-date">November 20, 2025</div>
+                    <h3>Getting Started with Serverless Architecture</h3>
+                    <p class="blog-excerpt">Everything you need to know about serverless computing and how it can benefit your projects...</p>
+                    <a class="read-more" onclick="openBlogModal('blog6')">Read More →</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div style="max-width: 600px; margin: 0 auto;">
-                <p style="text-align: center; margin-bottom: 2rem;">Have a project in mind? Let's discuss how we can help you.</p>
-                <button class="btn btn-success" style="display: block; margin: 0 auto; width: 200px;" onclick="openModal('contactModal')">Send us a Message</button>
-            </div>
-        </div>
+    <section id="contact" style="text-align: center; padding: 80px 2rem;">
+        <h2 class="section-title">Let's Work Together</h2>
+        <p style="max-width: 600px; margin: 0 auto 2rem; color: #555; font-size: 1.1rem;">Have a project in mind? Let's discuss how I can help bring your ideas to life.</p>
+        <button class="cta-button" onclick="openContactModal()" style="font-size: 1.1rem; padding: 15px 40px;">Send Message</button>
     </section>
 
-    <!-- Service Details Modal -->
-    <div id="serviceModal" class="modal">
+    <!-- Modals -->
+    <!-- Project Modals -->
+    <div id="projectModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="serviceTitle">Service Details</h2>
-                <button class="close-btn" onclick="closeModal('serviceModal')">&times;</button>
-            </div>
-            <div id="serviceBody">
-                <p>Loading service details...</p>
-            </div>
-            <div style="margin-top: 1.5rem; text-align: right;">
-                <button class="btn" onclick="closeModal('serviceModal')">Close</button>
-            </div>
+            <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+            <h2 class="modal-title" id="projectTitle">Project Title</h2>
+            <div id="projectBody" class="modal-text"></div>
         </div>
     </div>
 
-    <!-- Contact Form Modal -->
+    <!-- Blog Modals -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBlogModal()">&times;</span>
+            <h2 class="modal-title" id="blogTitle">Blog Title</h2>
+            <div id="blogBody" class="modal-text"></div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>Contact Us</h2>
-                <button class="close-btn" onclick="closeModal('contactModal')">&times;</button>
-            </div>
-            <div id="alertContainer"></div>
-            <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required>
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <h2 class="modal-title">Send Me a Message</h2>
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                <div style="margin-bottom: 1rem;">
+                    <label for="name" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: bold;">Your Name</label>
+                    <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
+                <div style="margin-bottom: 1rem;">
+                    <label for="email" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: bold;">Email Address</label>
+                    <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
                 </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone">
+                <div style="margin-bottom: 1rem;">
+                    <label for="message" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: bold;">Message</label>
+                    <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; font-family: 'Segoe UI', sans-serif;"></textarea>
                 </div>
-
-                <div class="form-group">
-                    <label for="service">Service Interested In *</label>
-                    <select id="service" name="service" required>
-                        <option value="">Select a service</option>
-                        <option value="Web Development">Web Development</option>
-                        <option value="UI/UX Design">UI/UX Design</option>
-                        <option value="Digital Consulting">Digital Consulting</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <div style="text-align: right; gap: 1rem; display: flex; justify-content: flex-end;">
-                    <button type="button" class="btn" onclick="closeModal('contactModal')">Cancel</button>
-                    <button type="submit" class="btn btn-success">Send Message</button>
-                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
             </form>
+            <div id="contactMessage" style="margin-top: 1rem; text-align: center;"></div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2025 My Professional Portfolio. All rights reserved.</p>
-            <p>
-                <a href="#">Privacy Policy</a> | 
-                <a href="#">Terms of Service</a> | 
-                <a href="#">Contact</a>
-            </p>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://twitter.com" target="_blank" title="Twitter">𝕏</a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn">in</a>
+                <a href="https://github.com" target="_blank" title="GitHub">⚙</a>
+                <a href="https://instagram.com" target="_blank" title="Instagram">📷</a>
+            </div>
+            <div class="footer-links">
+                <a onclick="scrollToSection('home')">Home</a>
+                <a onclick="scrollToSection('about')">About</a>
+                <a onclick="scrollToSection('services')">Services</a>
+                <a onclick="scrollToSection('projects')">Projects</a>
+                <a onclick="scrollToSection('blog')">Blog</a>
+                <a onclick="scrollToSection('contact')">Contact</a>
+            </div>
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Dark Mode Toggle
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-            updateDarkModeButton();
-        }
-
-        function updateDarkModeButton() {
-            const btn = document.querySelector('.dark-mode-toggle');
-            if (document.body.classList.contains('dark-mode')) {
-                btn.textContent = '☀️ Light Mode';
-            } else {
-                btn.textContent = '🌙 Dark Mode';
-            }
-        }
-
-        // Load dark mode preference
-        window.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
-            }
-            updateDarkModeButton();
-        });
-
-        // Smooth Scrolling
-        function smoothScroll(sectionId) {
+        // Scroll to section function
+        function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                element.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        // Modal Functions
-        function openModal(modalId, serviceName = null) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                
-                if (modalId === 'serviceModal' && serviceName) {
-                    loadServiceDetails(serviceName);
-                }
+        // Project modal data
+        const projectData = {
+            project1: {
+                title: "E-Commerce Platform",
+                content: `<p>A full-featured e-commerce platform designed to revolutionize online selling. This project includes:</p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>Product Management:</strong> Advanced inventory management with real-time stock updates</li>
+                    <li><strong>Payment Integration:</strong> Secure payment processing with multiple payment methods</li>
+                    <li><strong>Analytics Dashboard:</strong> Comprehensive sales analytics and customer insights</li>
+                    <li><strong>User Reviews:</strong> Customer feedback system with rating functionality</li>
+                    <li><strong>Mobile Responsive:</strong> Fully optimized for all devices</li>
+                </ul>
+                <p><strong>Technologies:</strong> React, Node.js, MongoDB, Stripe API, Redux</p>
+                <p><strong>Results:</strong> 40% increase in online sales for clients using this platform.</p>`
+            },
+            project2: {
+                title: "Task Management App",
+                content: `<p>A collaborative task management application that helps teams stay organized and productive. Features include:</p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>Real-time Collaboration:</strong> See team members' updates instantly</li>
+                    <li><strong>Project Organization:</strong> Create projects, boards, and customizable workflows</li>
+                    <li><strong>Smart Notifications:</strong> Never miss important updates and deadlines</li>
+                    <li><strong>File Sharing:</strong> Attach and share files directly within tasks</li>
+                    <li><strong>Time Tracking:</strong> Track time spent on different tasks</li>
+                </ul>
+                <p><strong>Technologies:</strong> Vue.js, Firebase, WebSockets, Material Design</p>
+                <p><strong>Results:</strong> Used by 500+ teams, improving productivity by an average of 35%.</p>`
+            },
+            project3: {
+                title: "Analytics Dashboard",
+                content: `<p>An interactive analytics dashboard for real-time data visualization and insights. Capabilities include:</p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>Real-time Metrics:</strong> Live updating of all key performance indicators</li>
+                    <li><strong>Custom Charts:</strong> Interactive visualization with D3.js</li>
+                    <li><strong>Data Export:</strong> Export reports in multiple formats (PDF, Excel, CSV)</li>
+                    <li><strong>Filtering & Segmentation:</strong> Deep dive into data with advanced filtering</li>
+                    <li><strong>API Integration:</strong> Connect multiple data sources seamlessly</li>
+                </ul>
+                <p><strong>Technologies:</strong> React, D3.js, Python, PostgreSQL</p>
+                <p><strong>Results:</strong> Reduced report generation time by 80%.</p>`
+            },
+            project4: {
+                title: "Social Messaging Platform",
+                content: `<p>A modern messaging platform with comprehensive communication features. Includes:</p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>Real-time Messaging:</strong> Instant message delivery with read receipts</li>
+                    <li><strong>Group Chats:</strong> Create groups and manage conversations effortlessly</li>
+                    <li><strong>End-to-End Encryption:</strong> Military-grade security for all communications</li>
+                    <li><strong>Media Sharing:</strong> Share photos, videos, and files</li>
+                    <li><strong>Voice & Video Calls:</strong> High-quality audio and video communication</li>
+                </ul>
+                <p><strong>Technologies:</strong> React, WebRTC, Socket.io, Node.js</p>
+                <p><strong>Results:</strong> 100K+ active users with 99.9% uptime.</p>`
+            },
+            project5: {
+                title: "Learning Management System",
+                content: `<p>A comprehensive platform for online learning and education. Features include:</p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>Course Management:</strong> Create and manage courses with multimedia content</li>
+                    <li><strong>Student Tracking:</strong> Monitor student progress and performance</li>
+                    <li><strong>Interactive Quizzes:</strong> Assessment tools with auto-grading</li>
+                    <li><strong>Discussion Forums:</strong> Enable peer-to-peer learning</li>
+                    <li><strong>Certificates:</strong> Award certificates upon course completion</li>
+                </ul>
+                <p><strong>Technologies:</strong> Django, PostgreSQL, React, Celery</p>
+                <p><strong>Results:</strong> Supporting 50+ institutions with 10,000+ students.</p>`
+            },
+            project6: {
+                title: "Healthcare Management System",
+                content: `<p>A HIPAA-compliant healthcare platform for modern medical practice management. Includes:</p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>Appointment Scheduling:</strong> Automated scheduling with reminders</li>
+                    <li><strong>Electronic Health Records:</strong> Secure storage of patient medical records</li>
+                    <li><strong>Patient Portal:</strong> Patients can access their health information anytime</li>
+                    <li><strong>Billing Integration:</strong> Automated billing and insurance processing</li>
+                    <li><strong>Prescription Management:</strong> Digital prescription handling</li>
+                </ul>
+                <p><strong>Technologies:</strong> Node.js, MongoDB, React, Express.js</p>
+                <p><strong>Results:</strong> Used by 30+ clinics, improving patient satisfaction by 42%.</p>`
+            }
+        };
+
+        // Blog modal data
+        const blogData = {
+            blog1: {
+                title: "10 Web Development Trends to Watch in 2025",
+                content: `<p><strong>December 15, 2025</strong></p>
+                <p>As we navigate through 2025, the web development landscape continues to evolve at an unprecedented pace. Here are the top 10 trends that are shaping the industry:</p>
+                <ol style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>AI Integration:</strong> AI-powered features are becoming standard in web applications</li>
+                    <li><strong>Edge Computing:</strong> More processing happening at the edge for better performance</li>
+                    <li><strong>Web3 & Blockchain:</strong> Decentralized applications gaining traction</li>
+                    <li><strong>Progressive Web Apps:</strong> PWAs continue to blur the line between web and mobile</li>
+                    <li><strong>Zero Trust Security:</strong> New approach to cybersecurity becoming industry standard</li>
+                    <li><strong>Micro-frontends:</strong> Breaking down large applications into smaller pieces</li>
+                    <li><strong>API-First Development:</strong> Focus on building robust APIs first</li>
+                    <li><strong>Low-Code Platforms:</strong> Democratizing web development with visual builders</li>
+                    <li><strong>Sustainable Web Design:</strong> Building eco-friendly digital experiences</li>
+                    <li><strong>Enhanced Privacy:</strong> Greater emphasis on user privacy and data protection</li>
+                </ol>
+                <p>Understanding these trends will help you stay ahead of the curve in web development.</p>`
+            },
+            blog2: {
+                title: "Mastering React Hooks: Advanced Patterns",
+                content: `<p><strong>December 10, 2025</strong></p>
+                <p>React Hooks have revolutionized how we write React components. In this article, we explore advanced patterns that can take your React development to the next level.</p>
+                <p><strong>Advanced Patterns Covered:</strong></p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li>Custom Hooks for code reusability</li>
+                    <li>useReducer for complex state management</li>
+                    <li>useContext for avoiding prop drilling</li>
+                    <li>useCallback for optimizing performance</li>
+                    <li>useEffect best practices and cleanup</li>
+                    <li>Building custom middleware with hooks</li>
+                    <li>Testing hooks effectively</li>
+                </ul>
+                <p>By mastering these patterns, you'll write cleaner, more maintainable React code.</p>`
+            },
+            blog3: {
+                title: "Web Security Best Practices: A Complete Guide",
+                content: `<p><strong>December 5, 2025</strong></p>
+                <p>Security should be a top priority in every web development project. This comprehensive guide covers the essential security practices you need to implement.</p>
+                <p><strong>Key Security Topics:</strong></p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li>HTTPS and SSL/TLS certificates</li>
+                    <li>Cross-Site Scripting (XSS) prevention</li>
+                    <li>Cross-Site Request Forgery (CSRF) protection</li>
+                    <li>SQL Injection prevention</li>
+                    <li>Authentication and authorization</li>
+                    <li>Password hashing and storage</li>
+                    <li>Content Security Policy (CSP)</li>
+                    <li>Regular security audits and penetration testing</li>
+                </ul>
+                <p>Implementing these practices will significantly reduce security vulnerabilities in your applications.</p>`
+            },
+            blog4: {
+                title: "Performance Optimization Tips for Modern Web Apps",
+                content: `<p><strong>November 30, 2025</strong></p>
+                <p>Performance is critical for user experience and SEO. Here are practical techniques to optimize your web application.</p>
+                <p><strong>Optimization Techniques:</strong></p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li>Code splitting and lazy loading</li>
+                    <li>Image optimization and WebP format</li>
+                    <li>Minification of CSS and JavaScript</li>
+                    <li>Caching strategies and service workers</li>
+                    <li>Database query optimization</li>
+                    <li>Content Delivery Networks (CDN)</li>
+                    <li>Monitoring and profiling tools</li>
+                    <li>Bundle size analysis</li>
+                </ul>
+                <p>These optimizations can reduce load times by up to 80%.</p>`
+            },
+            blog5: {
+                title: "UI/UX Design Principles for Web Developers",
+                content: `<p><strong>November 25, 2025</strong></p>
+                <p>Great design isn't just about aesthetics—it's about creating intuitive, user-friendly experiences. Here are essential principles every developer should know.</p>
+                <p><strong>Key Design Principles:</strong></p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li>Consistency in design patterns</li>
+                    <li>Clear visual hierarchy</li>
+                    <li>Accessibility and inclusive design</li>
+                    <li>Intuitive navigation</li>
+                    <li>Responsive and mobile-first design</li>
+                    <li>Loading states and feedback</li>
+                    <li>Color psychology</li>
+                    <li>Typography best practices</li>
+                </ul>
+                <p>Understanding these principles will help you create better user experiences.</p>`
+            },
+            blog6: {
+                title: "Getting Started with Serverless Architecture",
+                content: `<p><strong>November 20, 2025</strong></p>
+                <p>Serverless computing is changing how we build and deploy applications. Learn the basics and benefits of going serverless.</p>
+                <p><strong>Serverless Topics Covered:</strong></p>
+                <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem;">
+                    <li>What is serverless architecture</li>
+                    <li>AWS Lambda, Google Cloud Functions, Azure Functions</li>
+                    <li>Event-driven programming</li>
+                    <li>Cost optimization</li>
+                    <li>Scalability and performance</li>
+                    <li>Cold start problems and solutions</li>
+                    <li>Debugging serverless applications</li>
+                    <li>When to use serverless vs traditional servers</li>
+                </ul>
+                <p>Serverless is becoming the future of cloud computing.</p>`
+            }
+        };
+
+        // Open project modal
+        function openProjectModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const data = projectData[projectId];
+            if (data) {
+                document.getElementById('projectTitle').textContent = data.title;
+                document.getElementById('projectBody').innerHTML = data.content;
+                modal.style.display = 'block';
             }
         }
 
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                clearAlerts();
+        // Close project modal
+        function closeProjectModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Open blog modal
+        function openBlogModal(blogId) {
+            const modal = document.getElementById('blogModal');
+            const data = blogData[blogId];
+            if (data) {
+                document.getElementById('blogTitle').textContent = data.title;
+                document.getElementById('blogBody').innerHTML = data.content;
+                modal.style.display = 'block';
             }
         }
 
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Load Service Details
-        function loadServiceDetails(serviceName) {
-            const serviceDetails = {
-                'Web Development': {
-                    description: 'We create responsive, modern websites using HTML5, CSS3, and JavaScript. Our web development services include:',
-                    features: [
-                        'Responsive Design',
-                        'Progressive Web Apps',
-                        'E-commerce Solutions',
-                        'Performance Optimization',
-                        'SEO Optimization',
-                        'Ongoing Maintenance'
-                    ]
-                },
-                'UI/UX Design': {
-                    description: 'Beautiful and intuitive designs that enhance user experience. Our UI/UX services include:',
-                    features: [
-                        'Wireframing & Prototyping',
-                        'Visual Design',
-                        'User Research',
-                        'Interaction Design',
-                        'Usability Testing',
-                        'Design Systems'
-                    ]
-                },
-                'Digital Consulting': {
-                    description: 'Strategic guidance for your digital transformation. Our consulting services include:',
-                    features: [
-                        'Digital Strategy',
-                        'Technology Assessment',
-                        'Process Improvement',
-                        'Change Management',
-                        'Training & Support',
-                        'ROI Analysis'
-                    ]
-                }
-            };
-
-            const service = serviceDetails[serviceName];
-            if (service) {
-                document.getElementById('serviceTitle').textContent = serviceName;
-                let html = `<p>${service.description}</p><ul style="margin: 1.5rem 0; list-style: none;">`;
-                service.features.forEach(feature => {
-                    html += `<li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
-                        <span style="position: absolute; left: 0;">✓</span> ${feature}
-                    </li>`;
-                });
-                html += '</ul><p style="margin-top: 1.5rem;"><strong>Ready to get started?</strong> Contact us to discuss your project needs.</p>';
-                document.getElementById('serviceBody').innerHTML = html;
-            }
+        // Close blog modal
+        function closeBlogModal() {
+            document.getElementById('blogModal').style.display = 'none';
         }
 
-        // Form Handling
-        function handleFormSubmit(event) {
+        // Open contact modal
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        // Close contact modal
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // Handle contact form submission
+        function handleContactSubmit(event) {
             event.preventDefault();
-            
-            const form = document.getElementById('contactForm');
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value.trim();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
 
-            // Validate form
-            if (!name || !email || !service || !message) {
-                showAlert('alertContainer', 'Please fill in all required fields.', 'error');
-                return;
-            }
+            // Simulate sending message (in a real app, this would send to a server)
+            const messageDiv = document.getElementById('contactMessage');
+            messageDiv.style.color = '#28a745';
+            messageDiv.innerHTML = `<p><strong>Thank you, ${name}!</strong> Your message has been sent successfully. I'll get back to you soon at ${email}.</p>`;
 
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showAlert('alertContainer', 'Please enter a valid email address.', 'error');
-                return;
-            }
+            // Reset form
+            document.getElementById('contactForm').reset();
 
-            // Simulate form submission
-            showAlert('alertContainer', 'Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
-            
-            // Reset form after 2 seconds
+            // Close modal after 3 seconds
             setTimeout(() => {
-                form.reset();
-                setTimeout(() => closeModal('contactModal'), 500);
-            }, 2000);
+                closeContactModal();
+                messageDiv.innerHTML = '';
+            }, 3000);
         }
 
-        // Alert Functions
-        function showAlert(containerId, message, type) {
-            const container = document.getElementById(containerId);
-            const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
-            const alertHTML = `<div class="alert ${alertClass}">${message}</div>`;
-            container.innerHTML = alertHTML;
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        function clearAlerts() {
-            const alertContainer = document.getElementById('alertContainer');
-            if (alertContainer) {
-                alertContainer.innerHTML = '';
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const projectModal = document.getElementById('projectModal');
+            const blogModal = document.getElementById('blogModal');
+            const contactModal = document.getElementById('contactModal');
+
+            if (event.target === projectModal) {
+                projectModal.style.display = 'none';
             }
-        }
+            if (event.target === blogModal) {
+                blogModal.style.display = 'none';
+            }
+            if (event.target === contactModal) {
+                contactModal.style.display = 'none';
+            }
+        };
 
-        // Keyboard support for modals (ESC to close)
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const activeModal = document.querySelector('.modal.active');
-                if (activeModal) {
-                    activeModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
-            }
-        });
-
-        // Add fade-in animation on page load
-        window.addEventListener('load', function() {
-            document.querySelectorAll('.card, .feature, .testimonial').forEach((element, index) => {
-                element.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s both`;
             });
         });
     </script>
